@@ -27,7 +27,7 @@ const browser = await puppeteer.connect({
 
 const page = await browser.newPage();
 
-await page.goto("https://www.browserbase.com", {
+await page.goto("https://news.ycombinator.com/", {
   // let's make sure the page is fully loaded before asking for the live debug URL
   waitUntil: "domcontentloaded",
 });
