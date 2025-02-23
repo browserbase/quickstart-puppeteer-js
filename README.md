@@ -13,9 +13,9 @@
 <br/>
 
 ## Puppeteer with Browserbase
-Browserbase is the best developer platform to reliably run, manage, and monitor headless browsers.
+A web browser for your AI. Browserbase is the developer platform to reliably run, manage, and monitor headless browsers.
 
-Get browsers' complete control and leverage Browserbase's
+Get complete control over browsers and leverage Browserbase's
 [Infrastructure](https://docs.browserbase.com/under-the-hood), [Stealth Mode](https://docs.browserbase.com/features/stealth-mode), and
 [Session Debugger](https://docs.browserbase.com/features/sessions) to power your automation, test suites,
 and LLM data retrievals.
