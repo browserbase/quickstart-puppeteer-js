@@ -1,3 +1,4 @@
+import "dotenv/config";
 import puppeteer from "puppeteer-core";
 import Browserbase from "@browserbasehq/sdk";
 
@@ -16,35 +17,36 @@ const bb = new Browserbase({
   apiKey: API_KEY,
 });
 
-const session = await bb.sessions.create({
-  projectId: PROJECT_ID,
-});
-console.log(`Session created, id: ${session.id}`);
+(async () => {
+  const session = await bb.sessions.create({
+    projectId: PROJECT_ID,
+  });
+  console.log(`Session created, id: ${session.id}`);
 
-const browser = await puppeteer.connect({
-  browserWSEndpoint: session.connectUrl,
-});
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: session.connectUrl,
+  });
 
-const page = await browser.newPage();
+  const page = await browser.newPage();
 
-await page.goto("https://news.ycombinator.com/", {
-  // let's make sure the page is fully loaded before asking for the live debug URL
-  waitUntil: "domcontentloaded",
-});
+  await page.goto("https://www.browserbase.com/", {
+    // let's make sure the page is fully loaded before asking for the live debug URL
+    waitUntil: "domcontentloaded",
+  });
 
-const debugUrl = await bb.sessions.debug(session.id);
-console.log(
-  `Session started, live debug accessible here: ${debugUrl.debuggerUrl}.`,
-);
+  const debugUrl = await bb.sessions.debug(session.id);
+  console.log(
+    `Session started, live debug accessible here: ${debugUrl.debuggerUrl}.`,
+  );
 
-console.log("Taking a screenshot!");
-await page.screenshot({ fullPage: true });
+  console.log("Taking a screenshot!");
+  await page.screenshot({ fullPage: true });
 
-console.log("Shutting down...");
-await page.close();
-await browser.close();
+  console.log("Shutting down...");
+  await page.close();
+  await browser.close();
 
-console.log(
-  `Session complete! View replay at https://browserbase.com/sessions/${session.id}`,
-);
-
+  console.log(
+    `Session complete! View replay at https://browserbase.com/sessions/${session.id}`,
+  );
+})
