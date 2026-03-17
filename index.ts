@@ -2,15 +2,10 @@ import "dotenv/config";
 import puppeteer from "puppeteer-core";
 import Browserbase from "@browserbasehq/sdk";
 
-const PROJECT_ID = process.env.BROWSERBASE_PROJECT_ID;
 const API_KEY = process.env.BROWSERBASE_API_KEY;
 
 if (!API_KEY) {
   throw new Error("BROWSERBASE_API_KEY is not set");
-}
-
-if (!PROJECT_ID) {
-  throw new Error("BROWSERBASE_PROJECT_ID is not set");
 }
 
 const bb = new Browserbase({
@@ -19,7 +14,6 @@ const bb = new Browserbase({
 
 (async () => {
   const session = await bb.sessions.create({
-    projectId: PROJECT_ID,
   });
   console.log(`Session created, id: ${session.id}`);
 
@@ -49,4 +43,4 @@ const bb = new Browserbase({
   console.log(
     `Session complete! View replay at https://browserbase.com/sessions/${session.id}`,
   );
-})
+})();

@@ -29,10 +29,10 @@ npm install
 ```
 
 
-### 2. Get your Browserbase API Key and Project ID:
+### 2. Get your Browserbase API Key:
 
 - [Create an account](https://www.browserbase.com/sign-up) or [log in to Browserbase](https://www.browserbase.com/sign-in)
-- Copy your API Key and Project ID [from the Dashboard](https://www.browserbase.com/overview)
+- Copy your API Key [from the Dashboard](https://www.browserbase.com/overview)
 
 ### 3. Run the script:
 
